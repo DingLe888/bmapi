@@ -1,0 +1,38 @@
+{
+  "name": "react-native-dl-api",
+  "title": "React Native Dl Api",
+  "version": "1.0.15",
+  "description": "TODO",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "index.d.ts",
+    "modal.d.ts",
+    "ios",
+    "react-native-dl-api.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-dl-api.git",
+    "baseUrl": "https://github.com/github_account/react-native-dl-api"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "yourname@email.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {},
+  "devDependencies": {},
+  "dependencies": {}
+}

@@ -131,21 +131,36 @@ export default class ArenaApi {
          * path:小程序的页面路径,不填默认拉起小程序首页,用 "?foo=bar" 传参 
          * miniProgramType:小程序的类型（默认是0） 0：正式版  1：开发版  2：体验版
          */
-        openWXMiniProgram: (param: { userName: string, path?: string, miniProgramType?: WXMiniProgramType }) => Promise<DefaultResult>,
+        openWXMiniProgram: (param: { userName: string, path?: string, miniProgramType?: WXMiniProgramType }) => Promise<DefaultResult>
 
         /**
          *  打开连接
          * remoteUrl:远程url
          * openExitBtn:是否打开关闭按钮，为了防止微信支付页面的返回键失效
          */
-        openLink: (param: { remoteUrl: string, openExitBtn?: boolean }) => Promise<DefaultResult>,
+        openLink: (param: { remoteUrl: string, openExitBtn?: boolean }) => Promise<DefaultResult>
 
         /**
          *  打开原生页面
          * nativeKey:原生页面的key,原生根据key来区分目标页面,
          * param:打开页面的参数
          */
-        openNative: (param: { nativeKey: string, param: object }) => Promise<DefaultResult>,
+        openNative: (param: { nativeKey: string, param: object }) => Promise<DefaultResult>
+
+
+        /**
+         *  开启直播
+         * AppId:sdk 的id
+         * roomId 房间id
+         * channelName:频道id
+         * publishUrl:推流地址
+         * liveStreamingName:直播名称
+         * token:声网token
+         * nickName:昵称
+         * userPhoto: 头像
+         * userId: 用户id
+         */
+        liveStreaming: (param: { AppId: string, roomId: string, channelName: string, publishUrl: string, liveStreamingName: string, token: string, nickName: string, userPhoto: string, userId: string }) => Promise<DefaultResult>
     }
 
     /**

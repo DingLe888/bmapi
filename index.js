@@ -55,6 +55,7 @@ class Api {
         openWXMiniProgram: noop,
         openLink: noop,
         openNative: noop,
+        liveStreaming: noop
     }
 
     /**
@@ -210,7 +211,21 @@ class Api {
             } else {
 
                 // RN 环境
-                const { Platform, NativeModules } = require('react-native')
+                // import('react-native').then(RN => {
+                //     const dlapiModule = RN.NativeModules.DlApi;
+                //     if (dlapiModule) {
+                //         dlapiModule.callHandler(param, (err, result) => {
+                //             if (err == null) {
+                //                 resolve(result)
+                //             } else {
+                //                 reject(err)
+                //             }
+                //         })
+                //     } else {
+                //         reject({ code: '404', message: '未能和原生建立链接' })
+                //     }
+                // })
+                const { NativeModules } = require('react-native')
                 const dlapiModule = NativeModules.DlApi
                 if (dlapiModule) {
                     dlapiModule.callHandler(param, (err, result) => {

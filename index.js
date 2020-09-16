@@ -55,7 +55,8 @@ class Api {
         openWXMiniProgram: noop,
         openLink: noop,
         openNative: noop,
-        liveStreaming: noop
+        liveStreaming: noop,
+        saveImageToAlbum:noop,
     }
 
     /**

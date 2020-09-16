@@ -38,7 +38,7 @@ export interface ImagePickerOptions {
     includeExif?: boolean
 
     /**
-     *  裁剪框宽度占比 ，比如裁剪框宽高比是3：1，则此值传3
+     * 
      * 字符串（默认Edit Photo）
      * 裁剪图像时，工具栏的标题。
      */

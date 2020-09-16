@@ -78,7 +78,7 @@ export default class ArenaApi {
          * identifying: true 表示开启语音识别  false 表示关闭语音识别
          * 
          * 开启成功之后需要注册"speechRecognition"事件来监听原生的数据回调
-         * 监听语音识别回调,回调的数据结构为ResponseSpeech,请导入这个类型.
+         * 监听语音识别回调,回调的数据结构为 ResponseSpeech,请导入这个类型.
          */
         startSpeechRecognition: () => Promise<DefaultResult>
 
@@ -131,14 +131,15 @@ export default class ArenaApi {
          * path:小程序的页面路径,不填默认拉起小程序首页,用 "?foo=bar" 传参 
          * miniProgramType:小程序的类型（默认是0） 0：正式版  1：开发版  2：体验版
          */
-        openWXMiniProgram: (param: { userName: string, path?: string, miniProgramType?: WXMiniProgramType }) => Promise<DefaultResult>
+        openWXMiniProgram: (param: { userName: string, path?: string, miniProgramType: 0 | 1 | 2 }) => Promise<DefaultResult>
 
         /**
          *  打开连接
          * remoteUrl:远程url
+         * title:标题
          * openExitBtn:是否打开关闭按钮，为了防止微信支付页面的返回键失效
          */
-        openLink: (param: { remoteUrl: string, openExitBtn?: boolean }) => Promise<DefaultResult>
+        openLink: (param: { remoteUrl: string, title: string, openExitBtn?: boolean }) => Promise<DefaultResult>
 
         /**
          *  打开原生页面
@@ -146,7 +147,6 @@ export default class ArenaApi {
          * param:打开页面的参数
          */
         openNative: (param: { nativeKey: string, param: object }) => Promise<DefaultResult>
-
 
         /**
          *  开启直播
@@ -161,6 +161,12 @@ export default class ArenaApi {
          * userId: 用户id
          */
         liveStreaming: (param: { AppId: string, roomId: string, channelName: string, publishUrl: string, liveStreamingName: string, token: string, nickName: string, userPhoto: string, userId: string }) => Promise<DefaultResult>
+
+        /**
+         *  保存图片到相册
+         * imageUri: 图片远程地址 或者  本地路径
+         */
+        saveImageToAlbum: (param: { imageUri: string }) => Promise<DefaultResult>
     }
 
     /**
@@ -230,7 +236,7 @@ export default class ArenaApi {
          * platformType:分享平台
          * programType: 分享的小程序的类型（默认是0） 0：正式版  1：开发版  2：体验版
          */
-        shareSP: (param: { platformType: number, programType: number, title: string, desc: string, icon: string, userName: string, path: string, hdImage: string }) => Promise<DefaultResult>,
+        shareSP: (param: { platformType: number, programType: 0 | 1 | 2, title: string, desc: string, userName: string, path: string, hdImage: string }) => Promise<DefaultResult>,
     }
 
 

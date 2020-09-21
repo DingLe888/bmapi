@@ -56,7 +56,8 @@ class Api {
         openLink: noop,
         openNative: noop,
         liveStreaming: noop,
-        saveImageToAlbum:noop,
+        saveImageToAlbum: noop,
+        getUserInfo: noop,
     }
 
     /**
@@ -228,7 +229,7 @@ class Api {
                 // })
                 const { NativeModules } = require('react-native')
                 const dlapiModule = NativeModules.DlApi
-                if (dlapiModule) {
+                if (!!dlapiModule) {
                     dlapiModule.callHandler(param, (err, result) => {
                         if (err == null) {
                             resolve(result)
@@ -301,6 +302,15 @@ class Api {
         }
     }
 
+    /**
+     *  原生发过来的消息类型
+     */
+    static nativeMessage = {
+        gotDeviceToken: 'gotDeviceToken',
+        menuClick: 'menuClick',
+        speechRecognition: 'speechRecognition',
+        updateLocation: 'updateLocation',
+    }
 
     /**
     *   注册原生消息

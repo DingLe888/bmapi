@@ -432,3 +432,119 @@ export interface DefaultError {
     message: string
 }
 
+
+
+
+export interface UserModel {
+    activeTime: null
+    /**
+     *   添加时间
+     */
+    addTime: number
+    /**
+     *  生日
+     */
+    birthday: number
+    /**
+     *  渠道
+     */
+    channel: null | string
+    /**
+     *  所在市
+     */
+    city: string
+    /**
+     *  主企业编号
+     */
+    companyCode: string
+    /**
+     *  所在区
+     */
+    district: string
+    industry: string
+    /**
+     *  会员到期时间
+     */
+    invalidTime: 1564502399000
+
+    /**
+     *  身份令牌
+     */
+    token: string
+
+    /**
+     *  姓名
+     */
+    name: string
+    /**
+     *  昵称
+     */
+    nickname: null | string
+    /**
+     *  微信开发平台id
+     */
+    openId: null | string
+    /**
+     *  个人认证  0：未认证  1：已认证
+     */
+    personAuthState: 0 | 1
+    /**
+     *  手机号
+     */
+    phone: string
+    /**
+     *  头像
+     */
+    photo: string
+    /**
+     *  职位
+     */
+    position: string
+    postAuthState: 0
+    /**
+     *  所在省
+     */
+    province: "黑龙江"
+    /**
+     *  二维码图片地址
+     */
+    qrCode: null | string
+    /**
+     *  备注
+     */
+    remark: null | string
+    /**
+     *  
+     */
+    separateTag: 1
+    /**
+     *  性别 1：男    2：女
+     */
+    sex: 1 | 2
+    /**
+     *  来源
+     */
+    source: null | string
+    /**
+     *  0:未激活 1：正常
+     */
+    state: 1 | 0
+    stateChangeTime: null
+    /**
+     *  微信唯一id
+     */
+    unionId: string
+    upperUserId: string
+    /**
+     *  用户id
+     */
+    userId: string
+    /**
+     *  是否是会员 0：不是  1：是  2：过期
+     */
+    vipState: 2 | 1 | 0
+    /**
+     *  店铺编号
+     */
+    workShopCode: "V00065"
+}

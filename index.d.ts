@@ -1,6 +1,6 @@
 
 
-import { DefaultResult, ImagePickerOptions, LocationResponse, PlatformType, ResponseImage, WXMiniProgramType } from './modal';
+import { DefaultResult, ImagePickerOptions, LocationResponse, PlatformType, ResponseImage, UserModel, WXMiniProgramType } from './modal';
 
 
 
@@ -167,6 +167,11 @@ export default class ArenaApi {
          * imageUri: 图片远程地址 或者  本地路径
          */
         saveImageToAlbum: (param: { imageUri: string }) => Promise<DefaultResult>
+
+        /**
+         *  获得用户信息
+         */
+        getUserInfo: () => Promise<UserModel>
     }
 
     /**
@@ -274,6 +279,11 @@ export default class ArenaApi {
         closeWebpage: () => Promise<DefaultResult>
     }
 
+    /**
+     *  通用的发送JS消息到原生的接口
+     *  method:必填,api名称
+     */
+    static fromJsToNativeMessage: (param: { method: string, [key: string]: any }) => Promise<any>
 
     /**
      *  接收原生消息,
@@ -281,6 +291,16 @@ export default class ArenaApi {
      * callback:收到消息的回调；data 是回调中的数据 （本api规定data中的第一个参数是messageName 用于辨别不同类型的消息），success、failed是回调中向原生逆向回调的函数（web环境可用，RN环境不可用）
      */
     static registerNativeMsg: (messageName: string, callback: (data: any, success?: (result: any) => void, failed?: (err: any) => void) => void) => void
+
+    /**
+     *  原生发过来的消息类型
+     */
+    static nativeMessage: {
+        gotDeviceToken: string,
+        menuClick: string,
+        speechRecognition: string,
+        updateLocation: string,
+    }
 
     /**
     *   移除原生消息

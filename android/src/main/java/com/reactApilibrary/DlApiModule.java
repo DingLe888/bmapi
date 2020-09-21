@@ -82,7 +82,6 @@ public class DlApiModule extends ReactContextBaseJavaModule {
 
     private void reactNativeCallHandle(String messageName, JSONObject jsonObject) {
 
-
         jsonObject.put("messageName", messageName);
         reactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)

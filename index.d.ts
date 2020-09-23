@@ -71,7 +71,7 @@ export default class ArenaApi {
          * path:图片在本地磁盘的绝对路径
          *  action:其他操作 lookDemo:查看  onlyPhotoLibrary:从相册选择
          */
-        cerCamera: (param: { photoType: number }) => Promise<{ path?: string, action?: boolean }>
+        cerCamera: (param: { photoType: number }) => Promise<{ path?: string, action?: 'lookDemo' | 'onlyPhotoLibrary' }>
 
         /**
          *  开启语音识别，把用户的语音转化成文字的形式。支持普通话。

@@ -105,7 +105,7 @@ class Api {
         this.checkPlatform()
 
         // 组装storage - api接口
-        let apiKeys = ["storage", "location", "media", "util", "pay", "share"]
+        let apiKeys = ["storage", "location", "media", "util", "pay", "share","webPage"]
         apiKeys.forEach(apiKey => {
             this.traverse(this[apiKey], apiKey);
         })
@@ -214,20 +214,6 @@ class Api {
             } else {
 
                 // RN 环境
-                // import('react-native').then(RN => {
-                //     const dlapiModule = RN.NativeModules.DlApi;
-                //     if (dlapiModule) {
-                //         dlapiModule.callHandler(param, (err, result) => {
-                //             if (err == null) {
-                //                 resolve(result)
-                //             } else {
-                //                 reject(err)
-                //             }
-                //         })
-                //     } else {
-                //         reject({ code: '404', message: '未能和原生建立链接' })
-                //     }
-                // })
                 const { NativeModules } = require('react-native')
                 const dlapiModule = NativeModules.DlApi
                 if (!!dlapiModule) {
@@ -253,6 +239,8 @@ class Api {
 
             // 获取 web_bridge ,并监听原生发给web的消息
             this.setupWebViewJavascriptBridge((bridge) => {
+
+                if (!bridge || !bridge.registerHandler) return;
 
                 bridge.registerHandler('fromNativeToJsMessage', (data, responseCallback) => {
 

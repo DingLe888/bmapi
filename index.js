@@ -58,6 +58,7 @@ class Api {
         liveStreaming: noop,
         saveImageToAlbum: noop,
         getUserInfo: noop,
+        uploadFile: noop
     }
 
     /**
@@ -104,7 +105,7 @@ class Api {
         this.checkPlatform()
 
         // 组装storage - api接口
-        let apiKeys = ["storage", "location", "media", "util", "pay", "share", "webPage"]
+        let apiKeys = ["storage", "location", "media", "util", "pay", "share"]
         apiKeys.forEach(apiKey => {
             this.traverse(this[apiKey], apiKey);
         })
@@ -191,8 +192,7 @@ class Api {
                 // H5 环境
                 this.setupWebViewJavascriptBridge((bridge) => {
 
-                    if (bridge && bridge.callHandler) {
-
+                    if (bridge) {
                         bridge.callHandler('fromJsToNativeMessage', param, (responseData) => {
 
                             if (this.platform == 'android') {
@@ -214,7 +214,20 @@ class Api {
             } else {
 
                 // RN 环境
-                console.log('从 RN 端 向 App端发送消息');
+                // import('react-native').then(RN => {
+                //     const dlapiModule = RN.NativeModules.DlApi;
+                //     if (dlapiModule) {
+                //         dlapiModule.callHandler(param, (err, result) => {
+                //             if (err == null) {
+                //                 resolve(result)
+                //             } else {
+                //                 reject(err)
+                //             }
+                //         })
+                //     } else {
+                //         reject({ code: '404', message: '未能和原生建立链接' })
+                //     }
+                // })
                 const { NativeModules } = require('react-native')
                 const dlapiModule = NativeModules.DlApi
                 if (!!dlapiModule) {
@@ -240,14 +253,14 @@ class Api {
 
             // 获取 web_bridge ,并监听原生发给web的消息
             this.setupWebViewJavascriptBridge((bridge) => {
-                if (!bridge || !bridge.registerHandler) return;
+
                 bridge.registerHandler('fromNativeToJsMessage', (data, responseCallback) => {
 
                     if (this.platform == 'android') {
                         // 安卓返回的是JSON字符串，需要序列化
                         data = JSON.parse(data)
                     }
-                    // 成功的回调
+                    // 成功的回调 
                     const successCallback = (result) => {
                         responseCallback([null, result])
                     }

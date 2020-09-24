@@ -172,6 +172,12 @@ export default class ArenaApi {
          *  获得用户信息
          */
         getUserInfo: () => Promise<UserModel>
+
+        /**
+         *  上传文件
+         * filePath:文件路径
+         */
+        uploadFile: <F extends string | string[]>(param: { filePath: F }) => Promise<DefaultResult<F>>
     }
 
     /**

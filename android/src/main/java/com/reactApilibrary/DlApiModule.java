@@ -89,7 +89,7 @@ public class DlApiModule extends ReactContextBaseJavaModule {
     }
 
 
-    private static WritableMap jsonToMap(JSONObject jsonObject) {
+    public static WritableMap jsonToMap(JSONObject jsonObject) {
 
         WritableNativeMap map = new WritableNativeMap();
 
@@ -142,6 +142,17 @@ public class DlApiModule extends ReactContextBaseJavaModule {
         }
 
         return map;
+    }
+
+
+    public static JSONObject mapToJson(WritableMap map){
+        JSONObject jsonObject = new JSONObject();
+
+        for (Map.Entry<String,Object> entry: map.toHashMap().entrySet()){
+            jsonObject.put(entry.getKey(),entry.getValue());
+        }
+
+        return jsonObject;
     }
 
 }

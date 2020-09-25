@@ -13,12 +13,6 @@ RCT_EXPORT_MODULE()
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  if (DlApi.apiDelegate) {
-    __weak DlApi *dlapi = self;
-    [DlApi.apiDelegate setRNCallHandle:^(NSString * messageName,NSDictionary *data) {
-        [dlapi reactNativeCallHandle:messageName data:data];
-      }];
-  }
   return @[@"fromNativeToJsMessage"];
 }
 
@@ -37,6 +31,14 @@ RCT_EXPORT_MODULE()
 /// @param callback 回调
 RCT_EXPORT_METHOD(callHandler:(NSDictionary *)param callback:(RCTResponseSenderBlock)callback)
 {
+    
+    if (DlApi.apiDelegate) {
+      __weak DlApi *dlapi = self;
+      [DlApi.apiDelegate setRNCallHandle:^(NSString * messageName,NSDictionary *data) {
+          [dlapi reactNativeCallHandle:messageName data:data];
+        }];
+    }
+    
   if (![param isKindOfClass:NSDictionary.class]) {
     callback(@[@{@"code":@"401",@"message":@"参数只能是JS对象"},[NSNull null]]);
     return;

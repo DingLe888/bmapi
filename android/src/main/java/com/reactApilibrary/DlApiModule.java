@@ -120,7 +120,15 @@ public class DlApiModule extends ReactContextBaseJavaModule {
                         wArr.pushMap((WritableMap)item);
                     }else if (item instanceof WritableArray){
                         wArr.pushArray((WritableArray)item);
-                    }else {
+                    }else if(item instanceof String){
+                        wArr.pushString((String) item);
+                    }else if(item instanceof Integer){
+                        wArr.pushInt((Integer) item);
+                    }else if(item instanceof Double){
+                        wArr.pushDouble((Double) item);
+                    }else if(item instanceof Boolean){
+                        wArr.pushBoolean((Boolean) item);
+                    }else  {
                         WritableMap data = DlApiModule.jsonToMap((JSONObject) item);
                         wArr.pushMap(data);
                     }

@@ -63,7 +63,7 @@ export default class ArenaApi {
         /**
          *  调用摄像头拍照
          */
-        openCamera: (param: ImagePickerOptions) => Promise<ResponseImage>
+        openCamera: (param: ImagePickerOptions) => Promise<DefaultResult<ResponseImage>>
 
         /**
          *  拍证件照

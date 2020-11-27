@@ -58,7 +58,9 @@ class Api {
         liveStreaming: noop,
         saveImageToAlbum: noop,
         getUserInfo: noop,
-        uploadFile: noop
+        uploadFile: noop,
+        jsExceptionCatch: noop,
+        nativeExceptionCatch: noop,
     }
 
     /**
@@ -105,7 +107,7 @@ class Api {
         this.checkPlatform()
 
         // 组装storage - api接口
-        let apiKeys = ["storage", "location", "media", "util", "pay", "share","webPage"]
+        let apiKeys = ["storage", "location", "media", "util", "pay", "share", "webPage"]
         apiKeys.forEach(apiKey => {
             this.traverse(this[apiKey], apiKey);
         })

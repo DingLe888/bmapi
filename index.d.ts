@@ -178,6 +178,17 @@ export default class ArenaApi {
          * filePath:文件路径
          */
         uploadFile: <F extends string | string[]>(param: { filePath: F }) => Promise<DefaultResult<F>>
+
+        /**
+         *  捕获js 错误
+         */
+        jsExceptionCatch: (param: { name: string, message: string }) => Promise<DefaultResult>
+
+        /**
+         *  捕获原生 错误
+         */
+        nativeExceptionCatch: (param: { message: string }) => Promise<DefaultResult>
+
     }
 
     /**
